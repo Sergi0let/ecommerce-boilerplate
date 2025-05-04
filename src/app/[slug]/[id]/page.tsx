@@ -1,7 +1,7 @@
 import Checkicon from "@/components/icons/Checkicon";
 import Collapsible from "@/components/layouts/Colapsible";
 import ProductDelivery from "@/components/layouts/product-single/ProductDelivery";
-import ProductImgSlider from "@/components/layouts/product-single/ProductImgSlider";
+import ProductImgSlider from '@/components/layouts/product-single/ProductImgSlider';
 import ProductItem from "@/components/layouts/product-single/ProductItem";
 import ProductItemTitle from "@/components/layouts/product-single/ProductItemTitle";
 import ProductNav from "@/components/layouts/product-single/ProductNav";
@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/table";
 import { TestimonialProvider } from "@/context/TestimonialContext";
 import { cn } from "@/lib/utils";
-import { getProductById } from "@/utils/api";
+import { getProductById } from "@/types/utils/api";
 
 interface Props {
   params: Promise<{ slug: string; id: string }>;

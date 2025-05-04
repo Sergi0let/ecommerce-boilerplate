@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useTestimonial } from "@/context/TestimonialContext";
 import { testimonialsSchema } from "@/lib/validations";
 import { ITestimonials } from "@/types/product-types";
-import { getTestimonials } from "@/utils/api";
+import { getTestimonials } from "@/types/utils/api";
 import { useEffect, useId, useState } from "react";
 import ProductDialog from "./ProductDialog";
 import ProductRaiting from "./ProductRaiting";
