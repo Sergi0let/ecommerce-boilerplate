@@ -1,0 +1,214 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+🎨 Основна палітра і що вона означає
+Змінна	Значення	Призначення
+--background	oklch(1 0 0)	Фон сторінки (білий)
+--foreground	oklch(0.145 0 0)	Основний текст (майже чорний)
+--primary	oklch(0.205 0 0)	Головний колір інтерфейсу
+--primary-foreground	oklch(0.985 0 0)	Текст на primary фоні (майже білий)
+--secondary	oklch(0.57 0 230.82)	Додатковий фон
+--secondary-foreground	oklch(0.205 0 0)	Текст на secondary
+--muted	oklch(0.57 0 230.82)	Фон для менш важливого
+--muted-foreground	oklch(0.556 0 0)	Текст на muted, сірий
+--accent	oklch(0.57 0 230.82)	Підсвічування (hover, виділення)
+--accent-foreground	oklch(0.205 0 0)	Текст на accent
+--destructive	oklch(0.577 0.245 27.325)	Кольори для помилок/видалення (червоні)
+--border, --input	oklch(0.922 0 0)	Колір рамок/інпутів (світло-сірий)
+--ring	oklch(0.708 0 0)	Focus ring
+--card, --popover	oklch(1 0 0)	Фон карток і поповерів
+--card-foreground	oklch(0.145 0 0)	Текст на них
+🧾 Додаткові кольори
+
+Для Sidebar:
+Це локальна палітра для сайдбару, має власну логіку:
+--sidebar: фон
+--sidebar-primary: основний акцент
+--sidebar-accent: ще один рівень акценту (навіг. лінки, ховери)
+--sidebar-ring / --sidebar-border: focus/border кольори
+
+Для графіків:
+Це явно використовується для діаграм/графіків (можливо, з Recharts або Chart.js):
+--chart-1: яскравий помаранчевий
+--chart-2: світло-синій
+--chart-3: глибокий синій
+--chart-4: жовтий
+--chart-5: жовто-зелений
+Ти можеш циклічно перебирати ці кольори у компонентах для різних серій на графіку.
+*/
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-accent-custom: var(--accent-custom);
+}
+
+:root {
+  --radius: 0rem;
+  /* --radius: 0.625rem; */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.57 0 230.82);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.57 0 230.82);
+  --muted-foreground: #b2aeae;
+  --accent: oklch(0.57 0 230.82);
+  --accent-foreground: oklch(0.77 0 40.24);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.57 0 230.82);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  --container-w: 1360px;
+  --accent-custom: #14b356;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: #6b6b6b;
+  --accent: #dc0808;
+  --accent-foreground: #3758e7;
+  --destructive: #dc0808;
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+html {
+  transition:
+    background-color 0.6s ease,
+    color 0.6s ease;
+}
+
+html.dark {
+  background-color: #111;
+  color: #fff;
+}
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+@layer utilities {
+  /* SLIDER */
+  /* Стилі для каруселі мініатюр */
+  .product-page__thumbnails .splide__slide {
+    @apply opacity-60;
+  }
+
+  .product-page__thumbnails .splide__slide.is-active {
+    @apply !border-accent opacity-100;
+  }
+
+  /* Забезпечення коректного розміру для активного слайда */
+  .product-page__thumbnails .splide__slide.is-active img {
+    @apply object-cover;
+  }
+  .product-page .splide__pagination {
+    @apply -bottom-8;
+  }
+  .product-page .splide__pagination__page {
+    @apply bg-primary size-[6px] sm:size-2;
+  }
+  .product-page .splide__pagination__page.is-active {
+    @apply bg-primary;
+  }
+  .response-block .splide__pagination {
+    @apply static;
+  }
+  .response-block .splide__pagination__page {
+    @apply size-2 bg-gray-300;
+  }
+  .response-block .splide__pagination__page.is-active {
+    @apply bg-primary;
+  }
+  /* zoom */
+  .slider-zoom {
+    touch-action: pan-y;
+  }
+
+  /* END SLIDER */
+}
